@@ -1,4 +1,4 @@
-package addIntFromLinked;
+package leetQuestion.addIntFromLinked;
 
 /**
  * @Author: dhcao

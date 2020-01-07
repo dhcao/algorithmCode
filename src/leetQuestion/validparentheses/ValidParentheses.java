@@ -1,4 +1,4 @@
-package validparentheses;
+package leetQuestion.validparentheses;
 
 import java.util.Stack;
 
