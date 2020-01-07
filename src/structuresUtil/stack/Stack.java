@@ -1,4 +1,4 @@
-package structuresUtril.stack;
+package structuresUtil.stack;
 
 /**
  * @Author: dhcao
@@ -10,4 +10,5 @@ public interface Stack<E> {
     boolean isEmpty();
     E pop();
     E peek();
+    void push(E e);
 }
