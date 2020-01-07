@@ -1,4 +1,4 @@
-package leetQuestion.maxSubPalindrome;
+package leetQuestion.stringAndSubString.maxSubPalindrome;
 
 /**
  * 最长回文字串
@@ -17,59 +17,44 @@ package leetQuestion.maxSubPalindrome;
  * @Author: dhcao
  * @Version: 1.0
  */
-public class Palindrome {
+public class Palindrome2 {
 
     public static void main(String[] args) {
-        String str = "abb";
-        System.out.println(longestPalindrome(str));
+        System.out.println(longestPalindrome("babad"));
     }
 
-    /**
-     * 暴力破解是在直接从字符串的第一个开始，遍历所有可能。这种做法显然很慢，如果提交在leetcode上，我就出现了超出时间限制。
-     * 但是这个解法是没有问题的，遍历所有子串。
-     *
-     * 换一种思路：
-     *
-     * - 还是先定义tmp字符串来存储回文；
-     *
-     * - 我们先遍历所有的长度为2的子串（长度为1的就是单个字符），在发现第一个回文时停止！，
-     *      由于我们正在遍历的所有子串长度均为2，再多的回文串，长度也只是2，所以我们只取第一个。
-     *
-     * - 然后遍历长度为3的子串，取第一个回文，直接替换tmp，因为tmp之前存储的是长度为2的。
-     * - 遍历到最后，长度为n
-     * @param s
-     * @return
-     */
     public static String longestPalindrome(String s){
 
         if (s.length() == 0 || s.length() == 1) {
             return s;
         }
 
-        // 临时空间存储回文
-        String tmp = s.substring(0,1);
-        int len = 2;
-        int i = 0, j;
+        // 1. 先判断s本身是否是回文，如果是，则校验完成。
+        if (isPalindrome(s)) {
+            return s;
+        }
+
+        // 2. 构建一个固定窗口，窗口从i 到 j，窗口大小是s到长度-1（因为s本身已经校验过了）。
+        int len = s.length() - 1;
+        int i = 0;
+        int j ;
         do{
-            j = i+ len;
+            j = i + len;
             String subStr = s.substring(i, j);
-
-
             if (isPalindrome(subStr)) {
-                tmp = subStr;
+                return subStr;
+            }
+            else if(j == s.length()){
+                len --;
                 i = 0;
-                len ++ ;
-            }else if(j == s.length()){
-                i = 0;
-                len ++ ;
             }else{
                 i ++;
                 j ++;
             }
 
-        }while(j <= s.length() && len <= s.length());
+        }while(len > 0);
 
-        return tmp;
+        return s;
     }
 
     /**

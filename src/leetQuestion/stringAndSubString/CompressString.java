@@ -1,4 +1,4 @@
-package leetQuestion.compressString;
+package leetQuestion.stringAndSubString;
 
 import java.util.Scanner;
 

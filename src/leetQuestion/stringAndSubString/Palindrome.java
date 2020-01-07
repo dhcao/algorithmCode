@@ -1,4 +1,4 @@
-package leetQuestion.isPalindrome;
+package leetQuestion.stringAndSubString;
 
 /**
  *
